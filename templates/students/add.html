@@ -1,0 +1,30 @@
+{{if .Success}}
+	<h1>添加学生成功！ 继续添加:</h1>
+{{else}}
+	<h1>添加学生</h1>
+{{end}}
+<form method="POST" id="addStudent">
+	<label>姓: </label>
+	<input type="text" size="35" name="lastName"><br/>
+	<label>名: </label>
+	<input type="text" size="35" name="firstName"><br/>
+    <label>性别: </label>
+    <label>男</label><input type="radio" name="gender" value="Male">
+	<label>女</label><input type="radio" name="gender" value="Female"><br/>
+    <label>年龄: </label>
+    <input type="number" name="age" min="1" max="200"><br/>
+    <label>年级: </label>
+    <input type="number" name="grade" min="1" max="12"><br/>
+    <label>学校: </label>
+    <input type="text" size="35" name="school"><br/>
+    <label>城市: </label>
+    <input type="text" size="35" name="city"><br/>
+    <label>英语水平: </label>
+    <input type="text" size="35" name="englishLevel"><br/>
+	<input type="submit">
+</form>
+
+<ul>
+	<li><a href="./students">查看学生列表</a></li>
+	<li><a href="./">回到首页</a></li>
+</ul>

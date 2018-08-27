@@ -1,0 +1,27 @@
+<h1>修改学生记录</h1>
+<form method="POST" id="updateStudent">
+	<label>姓: </label>
+	<input type="text" size="35" name="lastName" value={{ .LastName }}><br/>
+	<label>名: </label>
+	<input type="text" size="35" name="firstName" value={{ .FirstName }}><br/>
+    <label>性别: </label>
+    <label>男</label><input type="radio" name="gender" value="Male">
+	<label>女</label><input type="radio" name="gender" value="Female"><br/>
+    <label>年龄: </label>
+    <input type="number" name="age" min="1" max="200" value={{ .Age }}><br/>
+    <label>年级: </label>
+    <input type="number" name="grade" min="1" max="12" value={{ .Grade }}><br/>
+    <label>学校: </label>
+    <input type="text" size="35" name="school" value={{ .School }}><br/>
+    <label>城市: </label>
+    <input type="text" size="35" name="city" value={{ .City }}><br/>
+    <label>英语水平: </label>
+    <input type="text" size="35" name="englishLevel" value={{ .EnglishLevel }}><br/>
+	<input type="submit">
+</form>
+
+<ul>
+	<li><a href="../students">查看学生列表</a></li>
+    <li><a href="../add_student">添加学生</a></li>
+	<li><a href="../">回到首页</a></li>
+</ul>

@@ -1,0 +1,39 @@
+<h1>学生列表</h1>
+
+<table id="studentsList">
+    <!-- Table header -->
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>年级</th>
+        <th>学校</th>
+        <th>城市</th>
+        <th>英语水平</th>
+        <th>修改学生记录</th>
+    </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+    {{range .Students}}
+    <tr>
+        <td>{{ .Id }}</td>
+        <td>{{ .LastName }} {{ .FirstName }}</td>
+        <td>{{ .Gender }}</td>
+        <td>{{ .Age }}</td>
+        <td>{{ .Grade }}</td>
+        <td>{{ .School }}</td>
+        <td>{{ .City }}</td>
+        <td>{{ .EnglishLevel }}</td>
+        <td><a href="./update_student/{{ .Id }}">修改</a></td>
+    </tr>
+    {{ end }}
+    </tbody>
+</table>
+
+<ul>
+    <li><a href="./add_student">添加学生</a></li>
+    <li><a href="./">回到首页</a></li>
+</ul>

@@ -4,6 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
+	"pzm/boldabc/environment"
+	"pzm/boldabc/students"
+
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/securecookie"
 	"github.com/gorilla/sessions"
@@ -38,25 +42,33 @@ func indexPageHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 const loginPage = `
-<h1>Login</h1>
+<h1>管理员登录</h1>
 <form method="post" action="/login">
-    <label for="username">User name</label>
+    <label for="username">管理员</label>
     <input type="text" id="username" name="username">
-    <label for="password">Password</label>
+    <label for="password">密码</label>
     <input type="password" id="password" name="password">
-    <button type="submit">Login</button>
+    <button type="submit">登录</button>
 </form>
 `
 
 // internal page
 
 const internalPage = `
-<h1>Internal</h1>
+<h1>BoldABC 内部管理页面</h1>
 <hr>
-<small>User: %s</small>
 <form method="post" action="/logout">
-    <button type="submit">Logout</button>
+    <label>管理员: %s</label>
+    <button type="submit">退出</button>
 </form>
+
+<div>
+	<h2>功能</h2>
+	<ul>
+		<li><a href="./students">查看学生列表</a></li>
+		<li><a href="./add_student">添加学生</a></li>
+	</ul>
+</div>
 `
 
 // login handler
@@ -83,9 +95,14 @@ func logoutHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	env := environment.New(store, "mysql", "root:@tcp(127.0.0.1:3306)/boldabc")
+
 	router.HandleFunc("/", indexPageHandler)
 	router.HandleFunc("/login", loginHandler).Methods("POST")
 	router.HandleFunc("/logout", logoutHandler).Methods("POST")
+	router.HandleFunc("/students", students.ListHandler(env))
+	router.HandleFunc("/add_student", students.AddHandler(env))
+	router.HandleFunc("/update_student/{id}", students.UpdateHandler(env))
 
 	http.ListenAndServe(":8080", router)
 }
