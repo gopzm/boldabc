@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Evaluation Report Generator</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.speakingAssessments = [
+			{
+				"key": "a1", 
+				"en": "The student is fluent in English and engages actively with advanced vocabulary. I spoke at a medium-fast pace and he understood me with ease throughout. I think he struggles with vocabulary advanced for his grade (simile, ruptured, archetype) and that more challenging texts and conversations will help him grow.", 
+				"ch": "Scott的英语非常流利，课堂上也能用很多高级词汇来表达自己的想法。在上课的时候，我的语速较快，但Scott还是能很好地听懂我所说的内容。我想Scott在口语和听力上的存在的弱点是很明显的，他不太能理解超出他这个年龄层所需要掌握的高级词汇如（simile, ruptured, archetype这些词），我想带领Scott通过阅读更有挑战性的文章，同时进行更深层次的对话，帮助Scott在口语和听力上快速提高。",
+			},
+			{ 
+				"key": "a2", 
+				"en": "abcbs jdas as dals asjdlas dsjlasj  dasjklsdaj  dasjldj ask.", 
+				"ch": "我想带领Scott通过阅读更有挑战性的文章，同时进行更深层次的对话，帮助Scott在口语和听力上快速提高。",
+			},
+			{ 
+				"key": "a3", 
+				"en": "sdjksdj  jdsaljds a dajskljdas  jdasldj sa", 
+				"ch": "帮助Scott在口语和听力上快速提高。",
+			},
+			];
+			$scope.readingAssessments = [
+			{
+				"key": "b1", 
+				"en": "Scott understands passages with ease and appears to enjoy reading a lot. I notice he does struggle with reading passages aloud and often stumbles over certain words. I think building this skill connects to building his public speaking ability. As for critical thinking, I think Scott is beginning to look deeper into his text and read \"as a writer would\" in order to advance his creative writing. I think he is ready to start learning analytical techniques and that it will open literature up to him in a whole new light.", 
+				"ch": "Scott很容易理解我所给他阅读的段落，也对阅读很有兴趣。 我注意到他似乎不太喜欢大声朗读段落，而且经常在某些单词上磕磕绊绊。我认为大声朗读文章，可以帮助Scott培养他的演讲能力。 至于思辨能力，我认为Scott已经开始像一名作家一样开始思考自己的所写的内容。我认为Scott已经准备好了学习更具体的文学分析技巧，这也将会为Scott的文学世界打开一扇新的窗户，让他更自如地在英语文学的世界里遨游。",
+			},
+			{ 
+				"key": "b2", 
+				"en": "abcbs jdas as dals asjdlas dsjlasj  dasjklsdaj  dasjldj ask.", 
+				"ch": "我想带领Scott通过阅读更有挑战性的文章，同时进行更深层次的对话，帮助Scott在口语和听力上快速提高。",
+			},
+			{ 
+				"key": "b3", 
+				"en": "sdjksdj  jdsaljds a dajskljdas  jdasldj sa", 
+				"ch": "帮助Scott在口语和听力上快速提高。",
+			},
+			];
+			$scope.writingAssessments = [
+			{
+				"key": "c1", 
+				"en": "Scott uses language with creativity and control. He understands how to build imagery and scene and the effect certain details have on the reader. He struggles a bit with passive voice and makes a few small errors, but overall he has a strong voice and talent for writing.", 
+				"ch": "Scott的写作非常有创意，也展现了他对语言的把控能力。他理解如何通过词语和句子给读者构建一个立体的画面，但是大部分的句子使用的都是被动语态，这点是Scott急需改善的地方。另外，Scott作文里面也存在着少量的语法和拼写错误，但总的来说Scott对写作的把控能力非常强，也展现了他所具有的写作天分。",
+			},
+			{ 
+				"key": "c2", 
+				"en": "abcbs jdas as dals asjdlas dsjlasj  dasjklsdaj  dasjldj ask.", 
+				"ch": "我想带领Scott通过阅读更有挑战性的文章，同时进行更深层次的对话，帮助Scott在口语和听力上快速提高。",
+			},
+			{ 
+				"key": "c3", 
+				"en": "sdjksdj  jdsaljds a dajskljdas  jdasldj sa", 
+				"ch": "帮助Scott在口语和听力上快速提高。",
+			},
+			];
+		});
+	</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>Assessment on Speaking and Listening: 
+			<select ng-model="selectedSpeakingAssessment" ng-options="a as a.key for a in speakingAssessments">
+				<option value="">Select one assessment</option>
+				<!-- <option ng-repeat="a in speaking" value="{{a}}">{{a.key}}: {{a.en | limitTo: 20 }}{{a.en.length > 20 ? '&hellip;' : ''}} </option>  -->
+			</select>
+		</p>
+		<p>Assessment on Reading Comprehension and Critical Thinking: 
+			<select ng-model="selectedReadingAssessment" ng-options="a as a.key for a in readingAssessments">
+				<option value="">Select one assessment</option>
+			</select>
+		</p>
+		<p>Assessment on Writing: 
+			<select ng-model="selectedWritingAssessment" ng-options="a as a.key for a in writingAssessments">
+				<option value="">Select one assessment</option>
+			</select>
+		</p>
+		<div id="eva_result">
+			<div id="speaking">
+				<h2>Assessment on Speaking and Listening</h2>
+				<p>{{selectedSpeakingAssessment.en}}</p>
+				<p>{{selectedSpeakingAssessment.ch}}</p>
+			</div>
+			<div id="speaking">
+				<h2>Assessment on Reading Comprehension and Critical Thinking</h2>
+				<p>{{selectedReadingAssessment.en}}</p>
+				<p>{{selectedReadingAssessment.ch}}</p>
+			</div>
+			<div id="speaking">
+				<h2>Assessment on Writing</h2>
+				<p>{{selectedWritingAssessment.en}}</p>
+				<p>{{selectedWritingAssessment.ch}}</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
