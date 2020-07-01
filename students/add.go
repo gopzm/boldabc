@@ -29,7 +29,7 @@ func AddHandler(env *environment.Env) http.HandlerFunc {
 			School:       r.FormValue("school"),
 			City:         r.FormValue("city"),
 			EnglishLevel: r.FormValue("englishLevel"),
-			TimeCreated:  time.Now().Unix(),
+			TimeCreated:  time.Now(),
 		}
 		age, err := strconv.ParseInt(r.FormValue("age"), 10, 64)
 		if err != nil {

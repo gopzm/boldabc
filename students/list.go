@@ -43,7 +43,7 @@ func ListHandler(env *environment.Env) http.HandlerFunc {
 				school sql.NullString
 				city   sql.NullString
 				el     sql.NullString
-				tc     sql.NullInt64
+				tc     sql.NullTime
 			)
 			if err := rows.Scan(&s.Id, &pid, &fn, &ln, &gender,
 				&age, &grade, &school, &city, &el, &tc); err != nil {
@@ -61,7 +61,7 @@ func ListHandler(env *environment.Env) http.HandlerFunc {
 			s.School = school.String
 			s.City = city.String
 			s.EnglishLevel = el.String
-			s.TimeCreated = tc.Int64
+			s.TimeCreated = tc.Time
 
 			p.Students = append(p.Students, &s)
 		}

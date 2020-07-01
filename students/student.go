@@ -1,6 +1,8 @@
 // Package students handles strudents related logic.
 package students
 
+import "time"
+
 // Student is the db model of student for displaying.
 type Student struct {
 	Id           int64
@@ -13,5 +15,5 @@ type Student struct {
 	School       string
 	City         string
 	EnglishLevel string
-	TimeCreated  int64
+	TimeCreated  time.Time
 }

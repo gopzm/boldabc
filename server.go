@@ -95,7 +95,7 @@ func logoutHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	env := environment.New(store, "mysql", "root:@tcp(127.0.0.1:3306)/boldabc")
+	env := environment.New(store, "mysql", "boldabc:123@tcp(127.0.0.1:3306)/boldabc?parseTime=true")
 
 	router.HandleFunc("/", indexPageHandler)
 	router.HandleFunc("/login", loginHandler).Methods("POST")

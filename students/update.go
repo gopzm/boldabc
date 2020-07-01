@@ -36,7 +36,7 @@ func queryStudent(env *environment.Env, id int64) (*Student, error) {
 			school sql.NullString
 			city   sql.NullString
 			el     sql.NullString
-			tc     sql.NullInt64
+			tc     sql.NullTime
 		)
 		if err := rows.Scan(&s.Id, &pid, &fn, &ln, &gender,
 			&age, &grade, &school, &city, &el, &tc); err != nil {
@@ -54,7 +54,7 @@ func queryStudent(env *environment.Env, id int64) (*Student, error) {
 		s.School = school.String
 		s.City = city.String
 		s.EnglishLevel = el.String
-		s.TimeCreated = tc.Int64
+		s.TimeCreated = tc.Time
 
 		return &s, nil
 	}
